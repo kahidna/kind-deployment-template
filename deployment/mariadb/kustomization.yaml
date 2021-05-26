@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- mariadb-configMap.yml 
+- mariadb-deployment.yml 
+- mariadb-service.yml
+- mariadb-pv.yml 
+- mariadb-pvc.yml

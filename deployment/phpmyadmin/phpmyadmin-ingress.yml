@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phpmyadmin-ingress
+  labels:
+    app: phpmyadmin-ingress
+spec:
+  rules:
+  - host: k8s.bukananakit.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: phpmyadmin-service
+          servicePort: 80
