@@ -21,11 +21,15 @@ nodes:
   extraMounts:
     - hostPath: /kind-k8s/worker-1
       containerPath: /vol
+    - hostPath: /run/udev
+      containerPath: /run/udev
 - role: worker
   image: kindest/node:v1.18.19
   extraMounts:
     - hostPath: /kind-k8s/worker-2
       containerPath: /vol
+    - hostPath: /run/udev
+      containerPath: /run/udev
 networking:
   disableDefaultCNI: true # disable kindnet
   podSubnet: 192.168.0.0/16 # set to Calico's default subnet
