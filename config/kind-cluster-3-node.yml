@@ -2,7 +2,7 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-  image: kindest/node:v1.18.19
+  image: kindest/node:v1.30.2
   kubeadmConfigPatches:
   - |
     kind: InitConfiguration
@@ -17,19 +17,26 @@ nodes:
     hostPort: 443
     protocol: TCP
 - role: worker
-  image: kindest/node:v1.18.19
+  image: kindest/node:v1.30.2
   extraMounts:
     - hostPath: /kind-k8s/worker-1
       containerPath: /vol
     - hostPath: /run/udev
       containerPath: /run/udev
 - role: worker
-  image: kindest/node:v1.18.19
+  image: kindest/node:v1.30.2
   extraMounts:
     - hostPath: /kind-k8s/worker-2
       containerPath: /vol
     - hostPath: /run/udev
       containerPath: /run/udev
+- role: worker
+  image: kindest/node:v1.30.2
+  extraMounts:
+    - hostPath: /kind-k8s/worker-3
+      containerPath: /vol
+    - hostPath: /run/udev
+      containerPath: /run/udev    
 networking:
   disableDefaultCNI: true # disable kindnet
   podSubnet: 192.168.0.0/16 # set to Calico's default subnet
